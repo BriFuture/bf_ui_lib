@@ -16,6 +16,16 @@ public:
     explicit BAboutDialog(QWidget *parent = nullptr);
     ~BAboutDialog();
 
+public slots:
+    void setLogo(const QPixmap &pix);
+    void setDesc(const QString &desc);
+    void setOwnership(const QString &desc);
+
+    void setRichDetail(const QString &detail);
+    void setDetail(const QString &detail);
+    void addDetail(const QString &detail);
+    void setDetailVisible(bool visible);
+
 private:
     Ui::BAboutDialog *ui;
 };

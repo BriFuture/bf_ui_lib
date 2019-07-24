@@ -24,8 +24,9 @@ else {
 
 DEPENDPATH += $$PWD/include
 LIBS += -L$$PWD/lib/
-CONFIG(release, debug|release):  -lBuiLib$$_BUI_LIB_MAJOR_VER
-else:CONFIG(debug, debug|release): -lBuiLibd$$_BUI_LIB_MAJOR_VER
+
+CONFIG(release, debug|release):  -l"BuiLib$$_BUI_LIB_MAJOR_VER"
+else:CONFIG(debug, debug|release): -l"BuiLibd$$_BUI_LIB_MAJOR_VER"
 
 
 # static import
