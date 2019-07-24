@@ -8,11 +8,15 @@ TEMPLATE = lib
 
 DEFINES += BUILIB_LIBRARY
 include(Builib.pri)
+
+win32: VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER".1"
+else:  VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER
+
 DESTDIR = $$PWD/lib/
 CONFIG(debug, debug|release) {
-    TARGET = Builibd
+    TARGET = BuiLibd
 } else {
-    TARGET = Builib
+    TARGET = BuiLib
 }
 
 TRANSLATIONS += res/builib_zh_CN.ts
@@ -29,11 +33,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/BAboutDialog.cpp \
+    src/BcConsole.cpp \
     src/BuiLib.cpp
 
 HEADERS += \
-        include/BuiLib.h \
-        include/builib_global.h
+    include/BAboutDialog.h \
+    include/BcConsole.h \
+    include/BuiLib.h \
+    include/builib_global.h
 
 unix {
     target.path = /usr/lib
@@ -42,3 +50,7 @@ unix {
 
 RESOURCES += \
     buires.qrc
+
+FORMS += \
+    include/BAboutDialog.ui \
+    include/BcConsole.ui
