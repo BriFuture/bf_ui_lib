@@ -42,13 +42,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     src/BAboutDialog.cpp \
     src/BcConsole.cpp \
-    src/BuiLib.cpp
+    src/BuiLib.cpp \
+    src/BLauncher.cpp \
+    src/BLoadingWidget.cpp
 
 HEADERS += \
     include/BAboutDialog.h \
     include/BcConsole.h \
     include/BuiLib.h \
-    include/builib_global.h
+    include/builib_global.h \
+    include/BLauncher.h \
+    include/BLoadingWidget.h
 
 unix {
     target.path = /usr/lib
@@ -60,4 +64,6 @@ RESOURCES += \
 
 FORMS += \
     include/BAboutDialog.ui \
-    include/BcConsole.ui
+    include/BcConsole.ui \
+    include/BLauncher.ui \
+    include/BLoadingWidget.ui

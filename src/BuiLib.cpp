@@ -1,4 +1,5 @@
 ﻿#include "BuiLib.h"
+#include <QObject>
 
 BuiLib::BuiLib()
 {
@@ -12,7 +13,7 @@ QString BuiLib::getVersion()
 
 QString BuiLib::aboutBuiLib()
 {
-    return QString("BriFuture's Custom UI Library.\n Version: %1").arg(getVersion());
+    return QObject::tr("Customized BUI Library.\n Version: %1").arg(getVersion());
 }
 
 int BuiLib::getMajorVer()

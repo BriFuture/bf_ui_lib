@@ -7,12 +7,12 @@ BAboutDialog::BAboutDialog(QWidget *parent) :
     ui(new Ui::BAboutDialog)
 {
     ui->setupUi(this);
-    ui->buiDesc->setText(QString("Support By \n%1").arg(BuiLib::aboutBuiLib()));
     setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::WindowCloseButtonHint | Qt::CustomizeWindowHint);
     setWindowModality(Qt::WindowModal);
     setFixedSize(size());
     ui->buiLogo->setPixmap(QPixmap(":/res/logo/logo.jpg"));
     connect(ui->okBtn, &QPushButton::clicked, this, &QDialog::close);
+    ui->buiDesc->setText(tr("Support By BUI Library. \n Version: %1.").arg(BuiLib::getVersion()));
 }
 
 BAboutDialog::~BAboutDialog()
@@ -55,4 +55,9 @@ void BAboutDialog::setDetailVisible(bool visible)
     ui->details->setVisible(visible);
     adjustSize();
     setFixedSize(size());
+}
+
+void BAboutDialog::retranslateUi()
+{
+    ui->buiDesc->setText(tr("Support By \n%1").arg(BuiLib::aboutBuiLib()));
 }
