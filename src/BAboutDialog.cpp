@@ -7,9 +7,12 @@ BAboutDialog::BAboutDialog(QWidget *parent) :
     ui(new Ui::BAboutDialog)
 {
     ui->setupUi(this);
-    ui->buiDesc->setText(QString("Support By %1").arg(BuiLib::aboutBuiLib()));
+    ui->buiDesc->setText(QString("Support By \n%1").arg(BuiLib::aboutBuiLib()));
     setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::WindowCloseButtonHint | Qt::CustomizeWindowHint);
     setWindowModality(Qt::WindowModal);
+    setFixedSize(size());
+    ui->buiLogo->setPixmap(QPixmap(":/res/logo/logo.jpg"));
+    connect(ui->okBtn, &QPushButton::clicked, this, &QDialog::close);
 }
 
 BAboutDialog::~BAboutDialog()
@@ -34,7 +37,7 @@ void BAboutDialog::setOwnership(const QString &desc)
 
 void BAboutDialog::setRichDetail(const QString &detail)
 {
-    ui->details->setHtml(detail);
+    ui->details->insertHtml(detail);
 }
 
 void BAboutDialog::setDetail(const QString &detail)
