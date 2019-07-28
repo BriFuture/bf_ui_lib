@@ -44,7 +44,8 @@ SOURCES += \
     src/BcConsole.cpp \
     src/BuiLib.cpp \
     src/BLauncher.cpp \
-    src/BLoadingWidget.cpp
+    src/BLoadingWidget.cpp \
+    src/BUiUtil.cpp
 
 HEADERS += \
     include/BAboutDialog.h \
@@ -52,7 +53,8 @@ HEADERS += \
     include/BuiLib.h \
     include/builib_global.h \
     include/BLauncher.h \
-    include/BLoadingWidget.h
+    include/BLoadingWidget.h \
+    include/BUiUtil.h
 
 unix {
     target.path = /usr/lib
@@ -67,3 +69,7 @@ FORMS += \
     include/BcConsole.ui \
     include/BLauncher.ui \
     include/BLoadingWidget.ui
+    include/BcConsole.ui
+
+DISTFILES += \
+    res/bui.qss

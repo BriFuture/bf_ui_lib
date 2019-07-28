@@ -1,0 +1,4 @@
+* .mdui-theme-primary-amber .mdui-color-theme {
+  color: rgba(0, 0, 0, .87) !important;
+  background-color: #ffc107 !important;
+}
