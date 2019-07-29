@@ -21,9 +21,12 @@ DEFINES += _BUI_LIB_MAJOR_VER=$$_BUI_LIB_MAJOR_VER \
 
 DESTDIR = $$PWD/lib/
 CONFIG(debug, debug|release) {
-    TARGET = BuiLibd
+    gcc:       TARGET = BuiLibd-gcc
+    else:msvc: TARGET = BuiLibd-msvc
 } else {
-    TARGET = BuiLib
+#    TARGET = BuiLib
+    gcc:       TARGET = BuiLib-gcc
+    else:msvc: TARGET = BuiLib-msvc
 }
 
 TRANSLATIONS += res/builib_zh_CN.ts
@@ -45,7 +48,8 @@ SOURCES += \
     src/BuiLib.cpp \
     src/BLauncher.cpp \
     src/BLoadingWidget.cpp \
-    src/BUiUtil.cpp
+    src/BUiUtil.cpp \
+    include/BProgramSharer.cpp
 
 HEADERS += \
     include/BAboutDialog.h \
@@ -54,12 +58,14 @@ HEADERS += \
     include/builib_global.h \
     include/BLauncher.h \
     include/BLoadingWidget.h \
-    include/BUiUtil.h
+    include/BUiUtil.h \
+    include/BProgramSharer.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
 
 RESOURCES += \
     buires.qrc

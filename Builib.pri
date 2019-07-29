@@ -1,4 +1,4 @@
-QT       += widgets qml quick gui serialport
+QT       += widgets qml quick gui
 CONFIG += c++11
 
 # requires Qt 5.7 and a C++11 compiler
@@ -15,8 +15,20 @@ UI_SOURCES_DIR = ./qt/ui/src
 }
 else {
 
-CONFIG(release, debug|release): LIBS += -L"$$PWD/lib/" -l"BuiLib$$_BUI_LIB_MAJOR_VER"
-else:CONFIG(debug, debug|release): LIBS += -L"$$PWD/lib/" -l"BuiLibd$$_BUI_LIB_MAJOR_VER"
+CONFIG(release, debug|release): {
+    gcc:       LIBS  += -L"$$PWD/lib" -l"BuiLib-gcc$${_BUI_LIB_MAJOR_VER}"
+    else:msvc: LIBS  += -L"$$PWD/lib" -l"BuiLib-msvc$${_BUI_LIB_MAJOR_VER}"
+
+#    win32-g++: PRE_TARGETDEPS += $$PWD/lib/libBuiLib-gcc$${_BUI_LIB_MAJOR_VER}.a
+#    else:win32:!win32-g++: PRE_TARGETDEPS += $$PWD/lib/BuiLib-msvc$${_BUI_LIB_MAJOR_VER}.lib
+}
+else:CONFIG(debug, debug|release): {
+    gcc:       LIBS  += -L"$$PWD/lib" -l"BuiLibd-gcc$${_BUI_LIB_MAJOR_VER}"
+    else:msvc: LIBS  += -L"$$PWD/lib" -l"BuiLibd-msvc$${_BUI_LIB_MAJOR_VER}"
+
+#    win32-g++: PRE_TARGETDEPS += $$PWD/lib/libBuiLibd-gcc$${_BUI_LIB_MAJOR_VER}.a
+#    else:win32:!win32-g++: PRE_TARGETDEPS += $$PWD/lib/BuiLibd-msvc$${_BUI_LIB_MAJOR_VER}.lib
+}
 
 
 # static import
@@ -24,10 +36,7 @@ else:CONFIG(debug, debug|release): LIBS += -L"$$PWD/lib/" -l"BuiLibd$$_BUI_LIB_M
 #else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -lBuiLibd
 #else:unix: LIBS += -L$$PWD/lib/ -lBuiLib
 
-#win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/lib/libBuiLib.a
-#else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/lib/libBuiLibd.a
-#else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/lib/BuiLib.lib
-#else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/lib/BuiLibd.lib
+
 #else:unix: PRE_TARGETDEPS += $$PWD/lib/libBuiLib.a
 
 } # contains(DEFINES, BUILIB_LIBRARY)

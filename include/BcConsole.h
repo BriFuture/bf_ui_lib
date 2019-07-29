@@ -46,6 +46,10 @@ public slots:
 
     void settingsVisible(bool visible);
 
+    void setLineTabVisible(bool visible);
+    void setRawTabVisible(bool visible);
+    void setTimestampEnable(bool enable);
+
 protected:
     void copyRawData(const QByteArray &tmpText);
 protected Q_SLOTS:

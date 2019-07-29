@@ -12,7 +12,8 @@ BAboutDialog::BAboutDialog(QWidget *parent) :
     setFixedSize(size());
     ui->buiLogo->setPixmap(QPixmap(":/res/logo/logo.jpg"));
     connect(ui->okBtn, &QPushButton::clicked, this, &QDialog::close);
-    ui->buiDesc->setText(tr("Support By BUI Library. \n Version: %1.").arg(BuiLib::getVersion()));
+    ui->buiDesc->setText(tr("Support By \nBUI Library Version: %1. \n"
+                            "Qt Framework Version: 5.7.0").arg(BuiLib::getVersion()));
 }
 
 BAboutDialog::~BAboutDialog()
@@ -53,6 +54,14 @@ void BAboutDialog::addDetail(const QString &detail)
 void BAboutDialog::setDetailVisible(bool visible)
 {
     ui->details->setVisible(visible);
+    adjustSize();
+    setFixedSize(size());
+}
+
+void BAboutDialog::setBUIVisible(bool visible)
+{
+    ui->buiLogo->setVisible(visible);
+    ui->buiDesc->setVisible(visible);
     adjustSize();
     setFixedSize(size());
 }

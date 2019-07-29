@@ -1,4 +1,4 @@
-#ifndef BUIUTIL_H
+﻿#ifndef BUIUTIL_H
 #define BUIUTIL_H
 
 #include <QObject>
@@ -10,8 +10,8 @@ class BUiUtil
 {
 public:
     BUiUtil();
-    void setApplication(const QApplication &app);
-    void polish(QWidget *w, )
+    void setApplication(QApplication &app);
+    void polish(QWidget *w);
 
 private:
     QStyle *style = nullptr;

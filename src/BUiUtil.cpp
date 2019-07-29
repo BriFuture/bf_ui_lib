@@ -1,4 +1,4 @@
-#include "BUiUtil.h"
+﻿#include "BUiUtil.h"
 #include <QFile>
 
 BUiUtil::BUiUtil()
@@ -6,7 +6,7 @@ BUiUtil::BUiUtil()
 
 }
 
-void BUiUtil::setApplication(const QApplication &app)
+void BUiUtil::setApplication(QApplication &app)
 {
     style = app.style();
     QFile styleFile(":/res/bui.qss");
@@ -14,4 +14,9 @@ void BUiUtil::setApplication(const QApplication &app)
     QString style = QString::fromUtf8(styleFile.readAll());
     app.setStyleSheet(style);
     styleFile.close();
+}
+
+void BUiUtil::polish(QWidget *w)
+{
+
 }

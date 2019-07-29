@@ -14,11 +14,15 @@ public:
     QTimer rawDataTimer;
     QMutex mut;
 
+    QWidget *lineTab = nullptr;
+    QWidget *rawTab = nullptr;
+
     void setupUi(BcConsole *c) {
         tempRawData.resize(4096);
 
         rawDataTimer.setInterval(80);
         rawDataTimer.setSingleShot(false);
+
     }
 };
 }
@@ -50,6 +54,9 @@ BcConsole::BcConsole(QWidget *parent): QWidget(parent),
 {
     ui->setupUi( this );
     uih->setupUi(this);
+    uih->lineTab = ui->lineTab;
+    uih->rawTab = ui->rawTab;
+
     QObject::connect(&uih->rawDataTimer, &QTimer::timeout, this, &BcConsole::showRawData);
     uih->rawDataTimer.start();
 
@@ -135,6 +142,29 @@ void BcConsole::onSendData(const QByteArray &tmpText) {
 void BcConsole::settingsVisible(bool visible)
 {
     ui->settingGroup->setVisible( visible );
+}
+
+void BcConsole::setLineTabVisible(bool visible)
+{
+    if(visible) {
+        ui->tabWidget->addTab(uih->lineTab, "LineData");
+    } else {
+        ui->tabWidget->removeTab(ui->tabWidget->indexOf(uih->lineTab));
+    }
+}
+
+void BcConsole::setRawTabVisible(bool visible)
+{
+    if(visible) {
+        ui->tabWidget->addTab(uih->rawTab, "LineData");
+    } else {
+        ui->tabWidget->removeTab(ui->tabWidget->indexOf(uih->rawTab));
+    }
+}
+
+void BcConsole::setTimestampEnable(bool enable)
+{
+    ui->datetimeBox->setChecked(enable);
 }
 
 

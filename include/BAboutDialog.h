@@ -26,6 +26,8 @@ public slots:
     void addDetail(const QString &detail);
     void setDetailVisible(bool visible);
 
+    void setBUIVisible(bool visible);
+
     void retranslateUi();
 private:
     Ui::BAboutDialog *ui;
