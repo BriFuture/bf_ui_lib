@@ -15,8 +15,11 @@ public:
     void exportMainWindowId(const QString &id);
     void exportPID();
 
+    QString findProgram(const QString &programName, const QString &defaultPath = QString());
+
     void open();
     void close();
+    void sync();
     QString getWid() const;
 
 private:

@@ -33,6 +33,19 @@ void BProgramSharer::exportPID()
     set->endGroup();
 }
 
+QString BProgramSharer::findProgram(const QString &programName, const QString &defaultPath)
+{
+
+    set->beginGroup("ProgramPath");
+    QString dp = defaultPath;
+    if(defaultPath.isEmpty()) {
+        dp = programName + ".exe";
+    }
+    QString programFile = set->value(programName, dp).toString();
+    set->endGroup();
+    return programFile;
+}
+
 void BProgramSharer::open()
 {
     if(set == nullptr) {
@@ -45,6 +58,11 @@ void BProgramSharer::close()
 {
     set->deleteLater();
     set = nullptr;
+}
+
+void BProgramSharer::sync()
+{
+    set->sync();
 }
 
 QString BProgramSharer::getWid() const
