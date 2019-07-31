@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QTimer>
 #include <QProgressBar>
+#include <QStringList>
 
 #include "builib_global.h"
 
@@ -23,6 +24,20 @@ public:
         setWaitMillSeconds(seconds * 1000);
     }
 
+    inline void setAutoClose(bool ac) {
+        m_autoClose = ac;
+    }
+
+    inline void setId(int id) {
+        m_id = id;
+    }
+
+    inline int id() const {
+        return m_id;
+    }
+
+    void setPreDetails(const QStringList &sl);
+
     void setWaitMillSeconds(int ms);
 
     void setProgress(int percent);
@@ -31,13 +46,23 @@ public:
 
     void setDetailVisible(bool visible);
     void appendDetail(const QString &detail);
+
+    void setBtnFrameVisible(bool visible);
+
+    void setBufferTime(int bufferPercent);
+    void setStackTop(bool top);
 signals:
     void cancled();
+    void timeout(int id = 0);
+    void bufferTimeOut(int id = 0);
 
 public slots:
-    void start();
+    void start(const QString &action = QString());
     void stop();
     void resume();
+    void reset();
+
+    void clearDetail();
 
     void progressMoveOn();
 
@@ -49,6 +74,15 @@ private:
     QTimer progressTimer;
     int m_maxWaitingMs = -1;
     int elapsedMs;
+    int m_bufferPercent;
+
+    QStringList preDetails;
+    int preDetailSeg;
+    int preDetailSegLen;
+
+    bool m_autoClose = false;
+
+    int m_id = 0;
 };
 
 #endif // BLOADINGWIDGET_H
