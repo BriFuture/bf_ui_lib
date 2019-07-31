@@ -1,12 +1,20 @@
-﻿QProgressBar:horizontal {
+﻿.QProgressBar:horizontal {
     border: 2px solid grey;
     border-radius: 5px;
     background-color: white;
     text-align: center;
 }
 
-QProgressBar::chunk:horizontal {
+.QProgressBar::chunk:horizontal {
     background-color: #007bff;
     width: 15px;
     margin: 0.5px;
+}
+
+.QPlainTextEdit[console="true"] {
+    background-color: #444444;
+    border: 2px solid gray;
+    border-radius: 3px;
+    padding: 0 8px;
+    color: #22ee22;
 }
