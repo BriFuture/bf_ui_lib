@@ -61,6 +61,7 @@ public slots:
     void stop();
     void resume();
     void reset();
+    void finish();
 
     void clearDetail();
 

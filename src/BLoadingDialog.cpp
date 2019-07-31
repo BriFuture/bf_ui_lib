@@ -146,6 +146,11 @@ void BLoadingDialog::reset()
     ui->progressBar->setValue(0);
 }
 
+void BLoadingDialog::finish()
+{
+    elapsedMs = m_maxWaitingMs;
+}
+
 void BLoadingDialog::clearDetail()
 {
     ui->detailEdit->clear();

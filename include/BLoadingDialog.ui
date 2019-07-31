@@ -86,7 +86,7 @@
     <widget class="QTextEdit" name="detailEdit">
      <property name="font">
       <font>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
     </widget>
