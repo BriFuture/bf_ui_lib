@@ -10,7 +10,7 @@ DEFINES += BUILIB_LIBRARY
 include(Builib.pri)
 
 _BUI_LIB_MINOR_VER = 1
-_BUI_LIB_PATCH_VER = 5
+_BUI_LIB_PATCH_VER = 6
 
 win32: VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER".1"
 else:  VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER
@@ -45,21 +45,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     src/BAboutDialog.cpp \
     src/BcConsole.cpp \
-    src/BuiLib.cpp \
     src/BLauncher.cpp \
-    src/BLoadingWidget.cpp \
     src/BUiUtil.cpp \
-    include/BProgramSharer.cpp
+    src/BProgramSharer.cpp \
+    src/BLoadingDialog.cpp \
+    src/BUILib.cpp
 
 HEADERS += \
     include/BAboutDialog.h \
     include/BcConsole.h \
-    include/BuiLib.h \
     include/builib_global.h \
     include/BLauncher.h \
-    include/BLoadingWidget.h \
     include/BUiUtil.h \
-    include/BProgramSharer.h
+    include/BProgramSharer.h \
+    include/BLoadingDialog.h \
+    include/BUILib.h
 
 unix {
     target.path = /usr/lib
@@ -74,7 +74,7 @@ FORMS += \
     include/BAboutDialog.ui \
     include/BcConsole.ui \
     include/BLauncher.ui \
-    include/BLoadingWidget.ui
+    include/BLoadingDialog.ui
     include/BcConsole.ui
 
 DISTFILES += \

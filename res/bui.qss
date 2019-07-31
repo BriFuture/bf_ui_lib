@@ -1,4 +1,12 @@
-* .mdui-theme-primary-amber .mdui-color-theme {
-  color: rgba(0, 0, 0, .87) !important;
-  background-color: #ffc107 !important;
+﻿QProgressBar:horizontal {
+    border: 2px solid grey;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+}
+
+QProgressBar::chunk:horizontal {
+    background-color: #007bff;
+    width: 15px;
+    margin: 0.5px;
 }

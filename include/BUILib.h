@@ -3,12 +3,13 @@
 
 #include "builib_global.h"
 #include <QString>
+#include <QApplication>
 
-class BUILIBSHARED_EXPORT BuiLib
+class BUILIBSHARED_EXPORT BUILib
 {
 
 public:
-    BuiLib();
+    BUILib();
     static int getMajorVer();
 
     static int getMinorVer();
@@ -18,6 +19,8 @@ public:
     static QString getVersion();
 
     static QString aboutBuiLib();
+
+    static void beautifyApp(QApplication &a);
 };
 
 #endif // BUILIB_H
