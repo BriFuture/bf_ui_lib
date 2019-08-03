@@ -9,8 +9,9 @@ BLoadingDialog::BLoadingDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     elapsedMs = 0;
+    m_bufferPercent = 0;
     m_maxWaitingMs = 100 * ProgressTimerMs;
-    ui->progressBar->setRange(0, 100);
+    ui->bLoadingProgressBar->setRange(0, 100);
 
     progressTimer.setSingleShot(false);
     progressTimer.setInterval(ProgressTimerMs);
@@ -35,9 +36,9 @@ void BLoadingDialog::setPreDetails(const QStringList &sl)
 void BLoadingDialog::setWaitMillSeconds(int ms)
 {
     if(ms <= 0) {
-        ui->progressBar->setMaximum(0);
+        ui->bLoadingProgressBar->setMaximum(0);
     } else {
-        ui->progressBar->setMaximum(100);
+        ui->bLoadingProgressBar->setMaximum(100);
     }
     m_maxWaitingMs = ms;
 }
@@ -49,7 +50,7 @@ void BLoadingDialog::setProgress(int percent)
     } else if(percent > 100) {
         percent = 100;
     }
-    ui->progressBar->setValue(percent);
+    ui->bLoadingProgressBar->setValue(percent);
 }
 
 void BLoadingDialog::setAction(const QString &action)
@@ -90,7 +91,7 @@ void BLoadingDialog::progressMoveOn()
         preDetailSeg += 1;
     }
 
-    ui->progressBar->setValue(per);
+    ui->bLoadingProgressBar->setValue(per);
 }
 
 void BLoadingDialog::setBtnFrameVisible(bool visible)
@@ -123,7 +124,7 @@ void BLoadingDialog::start(const QString &action)
         ui->actionLabel->setText(action);
     }
     show();
-    ui->progressBar->setValue(0);
+    ui->bLoadingProgressBar->setValue(0);
     elapsedMs = 0;
     progressTimer.start();
 
@@ -143,7 +144,7 @@ void BLoadingDialog::reset()
 {
     elapsedMs = 0;
     progressTimer.stop();
-    ui->progressBar->setValue(0);
+    ui->bLoadingProgressBar->setValue(0);
 }
 
 void BLoadingDialog::finish()
