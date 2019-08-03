@@ -1,0 +1,6 @@
+
+### v0.1.8
+
+控件
+1. 添加了 BAboutDialog （关于）控件、BLoadingDialog（进度条）控件、BLauncher（启动界面）
+2. 添加了助手类 BProgramSharer 用于共享程序
