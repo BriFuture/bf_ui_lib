@@ -10,7 +10,7 @@ DEFINES += BUILIB_LIBRARY
 include(Builib.pri)
 
 _BUI_LIB_MINOR_VER = 1
-_BUI_LIB_PATCH_VER = 8
+_BUI_LIB_PATCH_VER = 10
 
 win32: VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER".1"
 else:  VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER
@@ -49,7 +49,8 @@ SOURCES += \
     src/BUiUtil.cpp \
     src/BProgramSharer.cpp \
     src/BLoadingDialog.cpp \
-    src/BUILib.cpp
+    src/BUILib.cpp \
+    src/BUpdator.cpp
 
 HEADERS += \
     include/BAboutDialog.h \
@@ -59,7 +60,8 @@ HEADERS += \
     include/BUiUtil.h \
     include/BProgramSharer.h \
     include/BLoadingDialog.h \
-    include/BUILib.h
+    include/BUILib.h \
+    include/BUpdator.h
 
 unix {
     target.path = /usr/lib
