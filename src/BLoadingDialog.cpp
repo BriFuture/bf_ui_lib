@@ -85,7 +85,7 @@ void BLoadingDialog::progressMoveOn()
         emit timeout(m_id);
     }
 
-    if(per > preDetailSeg * preDetailSegLen) {
+    if(per > preDetailSeg * preDetailSegLen && preDetails.length() > 0) {
         if(preDetailSeg < preDetails.length())
             ui->detailEdit->append(preDetails.value(preDetailSeg) + "...");
         preDetailSeg += 1;

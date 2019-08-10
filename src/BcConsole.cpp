@@ -1,4 +1,4 @@
-﻿#include <BcConsole.h>
+﻿#include <BcWidgets/BcConsole.h>
 #include "ui_bcconsole.h"
 
 #include <QTime>
@@ -10,19 +10,16 @@ namespace Uih {
 class BcConsoleHelper {
 public:
     QByteArray tempRawData;
+    int maxTempRawDataLen = 4096;
     int recvRawDataLen = 0;
     QTimer rawDataTimer;
     QMutex mut;
 
-    QWidget *lineTab = nullptr;
-    QWidget *rawTab = nullptr;
-
     void setupUi(BcConsole *c) {
-        tempRawData.resize(4096);
+        tempRawData.resize(maxTempRawDataLen);
 
         rawDataTimer.setInterval(80);
         rawDataTimer.setSingleShot(false);
-
     }
 };
 }
@@ -48,15 +45,12 @@ public:
  *   // 接收到的原始数据，整行数据和发送到下位机的数据都会显示在界面上
  * \endcode
  */
-BcConsole::BcConsole(QWidget *parent): QWidget(parent),
+BcConsole::BcConsole(QWidget *parent): BcEasyWidget(parent),
     ui( new Ui::BcConsole ),
     uih(new Uih::BcConsoleHelper)
 {
     ui->setupUi( this );
     uih->setupUi(this);
-    uih->lineTab = ui->lineTab;
-    uih->rawTab = ui->rawTab;
-
     QObject::connect(&uih->rawDataTimer, &QTimer::timeout, this, &BcConsole::showRawData);
     uih->rawDataTimer.start();
 
@@ -95,10 +89,9 @@ BcConsole::~BcConsole()
 
 void BcConsole::beautify()
 {
-    QPalette p = ui->textField->palette();
-    p.setColor( QPalette::Base, Qt::black );
-    p.setColor( QPalette::Text, Qt::green );
-    ui->lineTextField->setPalette( p );
+    ui->lineTextField->setProperty("console", true);
+    style()->unpolish(ui->lineTextField);
+    style()->polish(ui->lineTextField);
 }
 
 void BcConsole::retranslateUi()
@@ -144,27 +137,21 @@ void BcConsole::settingsVisible(bool visible)
     ui->settingGroup->setVisible( visible );
 }
 
-void BcConsole::setLineTabVisible(bool visible)
+void BcConsole::setRawDataRefreshMs(int ms)
 {
-    if(visible) {
-        ui->tabWidget->addTab(uih->lineTab, "LineData");
-    } else {
-        ui->tabWidget->removeTab(ui->tabWidget->indexOf(uih->lineTab));
+    if(ms < 50) {
+        ms = 50;
     }
+    uih->rawDataTimer.start(ms);
 }
 
-void BcConsole::setRawTabVisible(bool visible)
+void BcConsole::setRawDataBufferSize(int bytes)
 {
-    if(visible) {
-        ui->tabWidget->addTab(uih->rawTab, "LineData");
-    } else {
-        ui->tabWidget->removeTab(ui->tabWidget->indexOf(uih->rawTab));
+    if(bytes < 4096) {
+        bytes = 4096;
     }
-}
-
-void BcConsole::setTimestampEnable(bool enable)
-{
-    ui->datetimeBox->setChecked(enable);
+    uih->tempRawData.resize(bytes);
+    uih->maxTempRawDataLen = bytes;
 }
 
 
@@ -215,6 +202,7 @@ void BcConsole::showRawData() {
         else {
             ui->textField->insertPlainText(QString(uih->tempRawData.left(uih->recvRawDataLen)));          // 不添加回车换行，但自动移动光标
         }
+//        qDebug() << "tempRawData" << uih->tempRawData;
         uih->recvRawDataLen = 0;
         uih->mut.unlock();
 
@@ -232,7 +220,7 @@ void BcConsole::copyRawData(const QByteArray &tmpText) {
 //    qDebug() << tmpText << len;
     uih->recvRawDataLen += len;
     uih->mut.unlock();
-    if(uih->recvRawDataLen > 3072) {
+    if(uih->recvRawDataLen > uih->maxTempRawDataLen - 1024) {
         showRawData();
     }
 }

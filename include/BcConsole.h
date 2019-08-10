@@ -1,7 +1,7 @@
 ﻿#ifndef CONSOLE_H
 #define CONSOLE_H
 
-#include <QWidget>
+#include <QDialog>
 #include <QGridLayout>
 #include <QPushButton>
 #include <QFile>
@@ -11,7 +11,7 @@
 #include <QTextEdit>
 #include <QTimer>
 
-#include "builib_global.h"
+#include <BcWidgets/BcEasyWidget.h>
 
 namespace Ui {
     class BcConsole;
@@ -21,7 +21,7 @@ namespace Uih {
 class BcConsoleHelper;
 }
 
-class BUILIBSHARED_EXPORT BcConsole : public QWidget
+class BC_DLL_EXPORT BcConsole : public BcEasyWidget
 {
     Q_OBJECT
 
@@ -32,7 +32,6 @@ public:
 
 signals:
     void visibleChange(bool visible);
-    // 通知是否显示的是 lineData
     void dataModeChanged(bool line);
 
 public slots:
@@ -46,9 +45,8 @@ public slots:
 
     void settingsVisible(bool visible);
 
-    void setLineTabVisible(bool visible);
-    void setRawTabVisible(bool visible);
-    void setTimestampEnable(bool enable);
+    void setRawDataRefreshMs(int ms);
+    void setRawDataBufferSize(int bytes);
 
 protected:
     void copyRawData(const QByteArray &tmpText);
