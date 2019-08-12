@@ -44,24 +44,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/BAboutDialog.cpp \
-    src/BcConsole.cpp \
     src/BLauncher.cpp \
     src/BUiUtil.cpp \
     src/BProgramSharer.cpp \
     src/BLoadingDialog.cpp \
     src/BUILib.cpp \
-    src/BUpdator.cpp
+    src/BUpdator.cpp \
+    src/BConsole.cpp
 
 HEADERS += \
     include/BAboutDialog.h \
-    include/BcConsole.h \
     include/builib_global.h \
     include/BLauncher.h \
     include/BUiUtil.h \
     include/BProgramSharer.h \
     include/BLoadingDialog.h \
     include/BUILib.h \
-    include/BUpdator.h
+    include/BUpdator.h \
+    include/BConsole.h
 
 unix {
     target.path = /usr/lib

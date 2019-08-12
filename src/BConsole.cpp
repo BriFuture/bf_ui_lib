@@ -1,4 +1,4 @@
-﻿#include <BcWidgets/BcConsole.h>
+﻿#include <BConsole.h>
 #include "ui_bcconsole.h"
 
 #include <QTime>
@@ -7,7 +7,7 @@
 #include <QDebug>
 
 namespace Uih {
-class BcConsoleHelper {
+class BConsoleHelper {
 public:
     QByteArray tempRawData;
     int maxTempRawDataLen = 4096;
@@ -15,7 +15,7 @@ public:
     QTimer rawDataTimer;
     QMutex mut;
 
-    void setupUi(BcConsole *c) {
+    void setupUi(BConsole *c) {
         tempRawData.resize(maxTempRawDataLen);
 
         rawDataTimer.setInterval(80);
@@ -45,13 +45,13 @@ public:
  *   // 接收到的原始数据，整行数据和发送到下位机的数据都会显示在界面上
  * \endcode
  */
-BcConsole::BcConsole(QWidget *parent): BcEasyWidget(parent),
+BConsole::BConsole(QWidget *parent): QWidget(parent),
     ui( new Ui::BcConsole ),
-    uih(new Uih::BcConsoleHelper)
+    uih(new Uih::BConsoleHelper)
 {
     ui->setupUi( this );
     uih->setupUi(this);
-    QObject::connect(&uih->rawDataTimer, &QTimer::timeout, this, &BcConsole::showRawData);
+    QObject::connect(&uih->rawDataTimer, &QTimer::timeout, this, &BConsole::showRawData);
     uih->rawDataTimer.start();
 
     ui->textField->setReadOnly( true );
@@ -81,20 +81,20 @@ BcConsole::BcConsole(QWidget *parent): BcEasyWidget(parent),
     });
 }
 
-BcConsole::~BcConsole()
+BConsole::~BConsole()
 {
     delete ui;
     delete uih;
 }
 
-void BcConsole::beautify()
+void BConsole::beautify()
 {
     ui->lineTextField->setProperty("console", true);
     style()->unpolish(ui->lineTextField);
     style()->polish(ui->lineTextField);
 }
 
-void BcConsole::retranslateUi()
+void BConsole::retranslateUi()
 {
     ui->retranslateUi(this);
 }
@@ -103,7 +103,7 @@ void BcConsole::retranslateUi()
 /**
  * !brief  将 textEdit 中的内容保存到指定文件中
  */
-void BcConsole::saveLog(bool line) {
+void BConsole::saveLog(bool line) {
     QString filename = QFileDialog::getSaveFileName(this, "LogTextBrowser", "", "*.txt");//设置文件
     //filename+=".txt";
     if( !filename.isEmpty() )
@@ -125,19 +125,19 @@ void BcConsole::saveLog(bool line) {
  * @param tmpText
  * 发送数据到下位机时，将其输出到文本框中
  */
-void BcConsole::onSendData(const QByteArray &tmpText) {
+void BConsole::onSendData(const QByteArray &tmpText) {
     QByteArray t = QString("[Query] %0").arg( currentTimeStr() ).toLatin1();
     ui->lineTextField->appendPlainText( t.append( tmpText ) );
 }
 
 
 /** 设置操作按钮/复选框等是否可见 */
-void BcConsole::settingsVisible(bool visible)
+void BConsole::settingsVisible(bool visible)
 {
     ui->settingGroup->setVisible( visible );
 }
 
-void BcConsole::setRawDataRefreshMs(int ms)
+void BConsole::setRawDataRefreshMs(int ms)
 {
     if(ms < 50) {
         ms = 50;
@@ -145,7 +145,7 @@ void BcConsole::setRawDataRefreshMs(int ms)
     uih->rawDataTimer.start(ms);
 }
 
-void BcConsole::setRawDataBufferSize(int bytes)
+void BConsole::setRawDataBufferSize(int bytes)
 {
     if(bytes < 4096) {
         bytes = 4096;
@@ -157,7 +157,7 @@ void BcConsole::setRawDataBufferSize(int bytes)
 
 /** 接收到一行数据 */
 /** 将接收到的数据显示在 textEdit 中 */
-void BcConsole::onRecvLineData(const QByteArray &tmpText) {
+void BConsole::onRecvLineData(const QByteArray &tmpText) {
     if( !this->isVisible()) {
         return;
     }
@@ -172,7 +172,7 @@ void BcConsole::onRecvLineData(const QByteArray &tmpText) {
 }
 
 /** 接收原始数据 */
-void BcConsole::onRecvRawData(const QByteArray &tmpText) {
+void BConsole::onRecvRawData(const QByteArray &tmpText) {
     if( !this->isVisible()) {
         return;
     }
@@ -180,7 +180,7 @@ void BcConsole::onRecvRawData(const QByteArray &tmpText) {
 }
 
 /** 返回时间字符串，若 datetimeBox 未勾选，则不会返回时间字符串 */
-QString BcConsole::currentTimeStr() {
+QString BConsole::currentTimeStr() {
     QString c;
     if( ui->datetimeBox->isChecked() ) {
         QString time = QTime::currentTime().toString( "hh:mm:ss.zzz" );
@@ -189,7 +189,7 @@ QString BcConsole::currentTimeStr() {
     return c;
 }
 
-void BcConsole::showRawData() {
+void BConsole::showRawData() {
 
     //    ui->textField->appendPlainText( display  );  // 会在某条语句后面加上回车换行，并更新光标位置
     if(uih->recvRawDataLen > 0) {
@@ -213,7 +213,7 @@ void BcConsole::showRawData() {
     }
 }
 
-void BcConsole::copyRawData(const QByteArray &tmpText) {
+void BConsole::copyRawData(const QByteArray &tmpText) {
     int len = tmpText.length();
     uih->mut.lock();
     memcpy(uih->tempRawData.data() + uih->recvRawDataLen, tmpText.data(), static_cast<size_t>(len));

@@ -11,23 +11,21 @@
 #include <QTextEdit>
 #include <QTimer>
 
-#include <BcWidgets/BcEasyWidget.h>
-
 namespace Ui {
     class BcConsole;
 }
 
 namespace Uih {
-class BcConsoleHelper;
+class BConsoleHelper;
 }
 
-class BC_DLL_EXPORT BcConsole : public BcEasyWidget
+class BConsole : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit BcConsole(QWidget *parent = nullptr);
-    ~BcConsole();
+    explicit BConsole(QWidget *parent = nullptr);
+    ~BConsole();
     void beautify();
 
 signals:
@@ -57,7 +55,7 @@ protected Q_SLOTS:
     void showRawData();
 private:
     Ui::BcConsole *ui = nullptr;
-    Uih::BcConsoleHelper *uih = nullptr;
+    Uih::BConsoleHelper *uih = nullptr;
 };
 
 #endif // CONSOLE_H
