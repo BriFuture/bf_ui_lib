@@ -20,3 +20,12 @@ void BUiUtil::polish(QWidget *w)
 {
 
 }
+
+void BUiUtil::setWidgetStyle(QWidget *w, const QString &stylefile)
+{
+    QFile file(stylefile);
+    file.open(QFile::ReadOnly);
+    QString style = QString::fromUtf8(file.readAll());
+    w->setStyleSheet(style);
+    file.close();
+}

@@ -5,6 +5,11 @@
 #include <QProcessEnvironment>
 #include <QDebug>
 
+const QString BUpdator::LevelAlpha = "alpha";
+const QString BUpdator::LevelBeta = "beta";
+const QString BUpdator::LevelStable = "stable";
+const QString BUpdator::LevelEmergence = "emergence";
+
 BUpdator::BUpdator(QObject *parent) : QObject(parent)
 {
     setRemoteMaxAttemp();
@@ -17,6 +22,11 @@ BUpdator::BUpdator(QObject *parent) : QObject(parent)
 void BUpdator::setLocalProgramName(const QString &pn)
 {
     localSchema.insert("programName", pn);
+}
+
+void BUpdator::setLocalDisplayName(const QString &name)
+{
+    localSchema.insert("displayName", name);
 }
 
 void BUpdator::setLocalProgramDir(const QString &dir)
@@ -77,6 +87,11 @@ void BUpdator::setRemoteUsername(const QString &un, const QString &pw)
 {
     remoteSchema.insert("username", un);
     remoteSchema.insert("password", pw);
+}
+
+void BUpdator::setRemoteLeastLevel(const QString &level)
+{
+    remoteSchema.insert("leastLevel", level);
 }
 
 

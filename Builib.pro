@@ -10,7 +10,7 @@ DEFINES += BUILIB_LIBRARY
 include(Builib.pri)
 
 _BUI_LIB_MINOR_VER = 1
-_BUI_LIB_PATCH_VER = 10
+_BUI_LIB_PATCH_VER = 16
 
 win32: VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER".1"
 else:  VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER
@@ -50,7 +50,8 @@ SOURCES += \
     src/BLoadingDialog.cpp \
     src/BUILib.cpp \
     src/BUpdator.cpp \
-    src/BConsole.cpp
+    src/BConsole.cpp \
+    src/BCard.cpp
 
 HEADERS += \
     include/BAboutDialog.h \
@@ -61,7 +62,8 @@ HEADERS += \
     include/BLoadingDialog.h \
     include/BUILib.h \
     include/BUpdator.h \
-    include/BConsole.h
+    include/BConsole.h \
+    include/BCard.h
 
 unix {
     target.path = /usr/lib
@@ -74,10 +76,10 @@ RESOURCES += \
 
 FORMS += \
     include/BAboutDialog.ui \
-    include/BcConsole.ui \
     include/BLauncher.ui \
-    include/BLoadingDialog.ui
-    include/BcConsole.ui
+    include/BLoadingDialog.ui \
+    include/BCard.ui \
+    include/BConsole.ui
 
 DISTFILES += \
     res/bui.qss

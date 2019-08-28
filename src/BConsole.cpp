@@ -1,5 +1,5 @@
 ﻿#include <BConsole.h>
-#include "ui_bcconsole.h"
+#include "ui_bconsole.h"
 
 #include <QTime>
 #include <QPalette>
@@ -46,7 +46,7 @@ public:
  * \endcode
  */
 BConsole::BConsole(QWidget *parent): QWidget(parent),
-    ui( new Ui::BcConsole ),
+    ui( new Ui::BConsole ),
     uih(new Uih::BConsoleHelper)
 {
     ui->setupUi( this );

@@ -1,5 +1,5 @@
-﻿#ifndef CONSOLE_H
-#define CONSOLE_H
+﻿#ifndef BCONSOLE_H
+#define BCONSOLE_H
 
 #include <QDialog>
 #include <QGridLayout>
@@ -11,15 +11,17 @@
 #include <QTextEdit>
 #include <QTimer>
 
+#include "builib_global.h"
+
 namespace Ui {
-    class BcConsole;
+    class BConsole;
 }
 
 namespace Uih {
 class BConsoleHelper;
 }
 
-class BConsole : public QWidget
+class BUILIBSHARED_EXPORT BConsole : public QWidget
 {
     Q_OBJECT
 
@@ -54,8 +56,8 @@ protected Q_SLOTS:
     QString currentTimeStr();
     void showRawData();
 private:
-    Ui::BcConsole *ui = nullptr;
+    Ui::BConsole *ui = nullptr;
     Uih::BConsoleHelper *uih = nullptr;
 };
 
-#endif // CONSOLE_H
+#endif // BCONSOLE_H

@@ -12,9 +12,15 @@ class BUILIBSHARED_EXPORT BUpdator : public QObject
 {
     Q_OBJECT
 public:
+    static const QString LevelAlpha;
+    static const QString LevelBeta;
+    static const QString LevelStable;
+    static const QString LevelEmergence;
+
     explicit BUpdator(QObject *parent = 0);
 
     void setLocalProgramName(const QString &pn);
+    void setLocalDisplayName(const QString &name);
     void setLocalProgramDir(const QString &dir);
     void setLocalTempDir(const QString &tdir = QString("./tmp"));
     void setLocalCurrentVersion(const QString &ver);
@@ -26,7 +32,7 @@ public:
 //    void setRemoteMetainfoLoc(const QString &loc);
     void setRemoteUserAgend(const QString &ua);
     void setRemoteUsername(const QString &un, const QString &pw);
-
+    void setRemoteLeastLevel(const QString &level);
 signals:
 
 public slots:
