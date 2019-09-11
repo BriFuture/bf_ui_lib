@@ -88,44 +88,57 @@ Qt Framework Version: 5.7.0</source>
         <translation>日志设置</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="53"/>
+        <location filename="../include/BConsole.ui" line="60"/>
+        <source>Special Char 
+Hide</source>
+        <translation>隐藏特殊字符</translation>
+    </message>
+    <message>
+        <location filename="../include/BConsole.ui" line="87"/>
+        <source>Stop Recv 
+Raw Data 
+When Hiding</source>
+        <translation>查看行数据时
+不接收原始数据</translation>
+    </message>
+    <message>
+        <location filename="../include/BConsole.ui" line="99"/>
         <source>Clear Log</source>
         <translation>清空日志</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="60"/>
-        <location filename="../src/BConsole.cpp" line="77"/>
+        <location filename="../include/BConsole.ui" line="106"/>
+        <location filename="../src/BConsole.cpp" line="78"/>
         <source>Save Line Data</source>
         <translation>按行保存数据</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="67"/>
+        <location filename="../include/BConsole.ui" line="47"/>
         <source>Timestamp</source>
         <translation>显示时间戳</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="80"/>
         <source>Cursor Auto Set End</source>
-        <translation>光标移至末尾</translation>
+        <translation type="vanished">光标移至末尾</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="93"/>
+        <location filename="../include/BConsole.ui" line="74"/>
         <source>Hex(Raw Data)</source>
         <translation>16进制显示
 （原始数据）</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="110"/>
+        <location filename="../include/BConsole.ui" line="120"/>
         <source>LineData</source>
         <translation>行数据</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="120"/>
+        <location filename="../include/BConsole.ui" line="130"/>
         <source>Raw Data</source>
         <translation>原始数据</translation>
     </message>
     <message>
-        <location filename="../src/BConsole.cpp" line="79"/>
+        <location filename="../src/BConsole.cpp" line="81"/>
         <source>Save Raw Data</source>
         <translation>保存原始数据</translation>
     </message>

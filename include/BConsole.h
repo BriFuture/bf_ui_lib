@@ -48,10 +48,15 @@ public slots:
     void setRawDataRefreshMs(int ms);
     void setRawDataBufferSize(int bytes);
 
+    void setRawDataFormat(bool hex);
+    void setTabRawData();
+
 protected:
+
     void copyRawData(const QByteArray &tmpText);
 protected Q_SLOTS:
     void saveLog(bool line = true);
+    void onTabBarClicked(int index);
 
     QString currentTimeStr();
     void showRawData();

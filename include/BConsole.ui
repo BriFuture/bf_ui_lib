@@ -34,34 +34,14 @@
      <property name="checked">
       <bool>false</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <property name="topMargin">
        <number>0</number>
       </property>
-      <property name="horizontalSpacing">
-       <number>25</number>
-      </property>
-      <property name="verticalSpacing">
-       <number>6</number>
-      </property>
-      <item row="4" column="1">
-       <widget class="QPushButton" name="clearBtn">
-        <property name="text">
-         <string>Clear Log</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QPushButton" name="saveBtn">
-        <property name="text">
-         <string>Save Line Data</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
+      <item>
        <widget class="QCheckBox" name="datetimeBox">
         <property name="text">
          <string>Timestamp</string>
@@ -71,20 +51,21 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QCheckBox" name="autoEnd">
+      <item>
+       <widget class="QCheckBox" name="specCharBox">
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>Cursor Auto Set End</string>
+         <string>Special Char 
+Hide</string>
         </property>
         <property name="checked">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item>
        <widget class="QCheckBox" name="isHex">
         <property name="autoFillBackground">
          <bool>false</bool>
@@ -94,6 +75,35 @@
         </property>
         <property name="checked">
          <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="stopRaw">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Stop Recv 
+Raw Data 
+When Hiding</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="clearBtn">
+        <property name="text">
+         <string>Clear Log</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="saveBtn">
+        <property name="text">
+         <string>Save Line Data</string>
         </property>
        </widget>
       </item>

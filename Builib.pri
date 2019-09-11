@@ -30,15 +30,6 @@ else:CONFIG(debug, debug|release): {
 #    else:win32:!win32-g++: PRE_TARGETDEPS += $$PWD/lib/BuiLibd-msvc$${_BUI_LIB_MAJOR_VER}.lib
 }
 
-
-# static import
-#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -lBuiLib
-#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -lBuiLibd
-#else:unix: LIBS += -L$$PWD/lib/ -lBuiLib
-
-
-#else:unix: PRE_TARGETDEPS += $$PWD/lib/libBuiLib.a
-
 } # contains(DEFINES, BUILIB_LIBRARY)
 
 INCLUDEPATH += $$PWD/include
