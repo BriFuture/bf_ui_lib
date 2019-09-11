@@ -1,6 +1,7 @@
 ﻿#include "BLauncher.h"
 #include "ui_BLauncher.h"
 
+#include <math.h>
 #include <QDebug>
 
 #define ProgressRefreshMs 10

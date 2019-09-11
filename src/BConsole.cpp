@@ -1,5 +1,5 @@
 ﻿#include <BConsole.h>
-#include "ui_bconsole.h"
+#include "ui_BConsole.h"
 
 #include <QTime>
 #include <QPalette>
