@@ -5,6 +5,9 @@
 BProgramSharer::BProgramSharer(const QString programName)
 {
     this->programName = programName;
+    if(programName.isEmpty()) {
+        this->programName = QApplication::applicationName();
+    }
     open();
 }
 
