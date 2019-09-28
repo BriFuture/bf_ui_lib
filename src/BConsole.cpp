@@ -3,20 +3,16 @@
 
 #include <QTime>
 #include <QPalette>
-#include <QMutex>
 #include <QDebug>
 
 namespace Uih {
 class BConsoleHelper {
 public:
-    QByteArray tempRawData;
-    int maxTempRawDataLen = 4096;
+    int maxTempRawDataLen = 1024;
     int recvRawDataLen = 0;
     QTimer rawDataTimer;
-    QMutex mut;
 
     void setupUi(BConsole *c) {
-        tempRawData.resize(maxTempRawDataLen);
 
         rawDataTimer.setInterval(80);
         rawDataTimer.setSingleShot(false);
@@ -54,22 +50,24 @@ BConsole::BConsole(QWidget *parent): QWidget(parent),
     QObject::connect(&uih->rawDataTimer, &QTimer::timeout, this, &BConsole::showRawData);
     uih->rawDataTimer.start();
 
-    ui->textField->setReadOnly( true );
+    ui->rawField->setReadOnly( true );
     ui->lineTextField->setReadOnly(true);
     ui->isHex->hide();
+    ui->hexField->hide();
 
-    connect( ui->clearBtn, &QPushButton::clicked, ui->textField, &QPlainTextEdit::clear);
+    connect( ui->clearBtn, &QPushButton::clicked, ui->rawField, &QPlainTextEdit::clear);
     connect( ui->clearBtn, &QPushButton::clicked, ui->lineTextField, &QPlainTextEdit::clear);
-    connect( ui->saveBtn,  &QPushButton::clicked, [=] {
-        this->saveLog();
-    });
+    connect( ui->saveBtn,  &QPushButton::clicked, [=] { this->saveLog(); });
+    connect(ui->isHex, &QCheckBox::clicked, [=](bool checked) { ui->hexField->setVisible(checked); });
 
     connect( ui->specCharBox, &QCheckBox::clicked, [=](bool checked) {
         if( checked )
-            ui->textField->moveCursor( QTextCursor::End );
+            ui->rawField->moveCursor( QTextCursor::End );
     });
 
     connect(ui->tabWidget, &QTabWidget::tabBarClicked, this, &BConsole::onTabBarClicked );
+    tempRawData.resize(uih->maxTempRawDataLen);
+
 }
 
 BConsole::~BConsole()
@@ -105,7 +103,7 @@ void BConsole::saveLog(bool line) {
         if(toLineDataSave)
             file.write(ui->lineTextField->toPlainText().toLatin1());   //写文件
         else
-            file.write(ui->textField->toPlainText().toLatin1());   //写文件
+            file.write(ui->rawField->toPlainText().toLatin1());   //写文件
         file.close();    //关文件
         file.deleteLater();
     }
@@ -116,13 +114,13 @@ void BConsole::onTabBarClicked(int index)
     bool line = (index == 0);
     emit dataModeChanged(line);
     ui->isHex->setVisible(!line);
-    ui->specCharBox->setVisible(line);
-    ui->stopRaw->setVisible(line);
     if(line) {
         ui->saveBtn->setText(tr("Save Line Data"));
+        lastHexEnabled = ui->isHex->isChecked();
         ui->isHex->setChecked(false);  // performance issue，切换到 line 模式，禁用 hex 转换
     } else {
         ui->saveBtn->setText(tr("Save Raw Data"));
+        ui->isHex->setChecked(lastHexEnabled);
     }
 }
 
@@ -132,8 +130,8 @@ void BConsole::onTabBarClicked(int index)
  * 发送数据到下位机时，将其输出到文本框中
  */
 void BConsole::onSendData(const QByteArray &tmpText) {
-    QByteArray t = QString("[Query] %0").arg( currentTimeStr() ).toLatin1();
-    ui->lineTextField->appendPlainText( t.append( tmpText ) );
+    QByteArray t = currentTimeStr().toLatin1();
+    ui->sendField->appendPlainText( t.append( tmpText ) );
 }
 
 
@@ -156,14 +154,10 @@ void BConsole::setRawDataBufferSize(int bytes)
     if(bytes < 4096) {
         bytes = 4096;
     }
-    uih->tempRawData.resize(bytes);
+    tempRawData.resize(bytes);
     uih->maxTempRawDataLen = bytes;
 }
 
-void BConsole::setRawDataFormat(bool hex)
-{
-    ui->isHex->setChecked(hex);
-}
 
 void BConsole::setTabRawData()
 {
@@ -197,16 +191,7 @@ void BConsole::onRecvLineData(const QByteArray &tmpText) {
     ui->lineTextField->moveCursor(QTextCursor::End);
 }
 
-/** 接收原始数据 */
-void BConsole::onRecvRawData(const QByteArray &tmpText) {
-    if(!this->isVisible()) {
-        return;
-    }
-    if(!ui->isHex->isVisible() && ui->stopRaw->isChecked()) {
-        return;
-    }
-    copyRawData(tmpText);
-}
+
 
 /** 返回时间字符串，若 datetimeBox 未勾选，则不会返回时间字符串 */
 QString BConsole::currentTimeStr() {
@@ -218,35 +203,61 @@ QString BConsole::currentTimeStr() {
     return c;
 }
 
+
+void BConsole::setRawDataFormat(bool hex)
+{
+    ui->hexField->setVisible(hex);
+
+    ui->hexField->moveCursor(QTextCursor::End);
+    ui->rawField->moveCursor(QTextCursor::End);
+    ui->isHex->setChecked(hex);
+}
+
+/*! 接收原始数据 */
+void BConsole::onRecvRawData(const QByteArray &tmpText) {
+    if(!this->isVisible()) {
+        return;
+    }
+    if(ui->lineTextField->isVisible() && ui->stopRaw->isChecked()) {
+        return;
+    }
+    copyRawData(tmpText);
+}
+
 void BConsole::showRawData() {
 
-    //    ui->textField->appendPlainText( display  );  // 会在某条语句后面加上回车换行，并更新光标位置
-    if(uih->recvRawDataLen > 0) {
-        ui->textField->moveCursor(QTextCursor::End);
-        bool hex = ui->isHex->isChecked();
-        uih->mut.lock();
-        if(hex) {
-            ui->textField->insertPlainText(QString(uih->tempRawData.left(uih->recvRawDataLen).toHex()));          // 不添加回车换行，但自动移动光标
-        }
-        else {
-            ui->textField->insertPlainText(QString(uih->tempRawData.left(uih->recvRawDataLen)));          // 不添加回车换行，但自动移动光标
-        }
-//        qDebug() << "tempRawData" << uih->tempRawData;
-        uih->recvRawDataLen = 0;
-        uih->mut.unlock();
-
-        ui->textField->moveCursor(QTextCursor::End);
+    //    ui->rawField->appendPlainText( display  );  // 会在某条语句后面加上回车换行，并更新光标位置
+    if(uih->recvRawDataLen == 0) {
+        return;
     }
+    ui->rawField->moveCursor(QTextCursor::End);
+    bool hex = ui->isHex->isChecked();
+    if(hex) {
+        int count = 0;
+        qDebug() << uih->recvRawDataLen;
+        // 64 characters is displayed each line
+        while(count + 64 < uih->recvRawDataLen) {
+            ui->hexField->appendPlainText(QString(tempRawData.mid(count, 64).toHex()));
+            count += 64;
+        }
+        if(count < uih->recvRawDataLen) {
+            ui->hexField->insertPlainText(QString(tempRawData.mid(count, uih->recvRawDataLen - count).toHex()));
+        }
+    }
+
+    ui->rawField->insertPlainText(QString(tempRawData.left(uih->recvRawDataLen)));          // 不添加回车换行
+    ui->rawField->moveCursor(QTextCursor::End);
+
+    uih->recvRawDataLen = 0;
 }
 
 void BConsole::copyRawData(const QByteArray &tmpText) {
+
     int len = tmpText.length();
-    uih->mut.lock();
-    memcpy(uih->tempRawData.data() + uih->recvRawDataLen, tmpText.data(), static_cast<size_t>(len));
+    memcpy(tempRawData.data() + uih->recvRawDataLen, tmpText.data(), static_cast<size_t>(len));
 //    qDebug() << tmpText << len;
     uih->recvRawDataLen += len;
-    uih->mut.unlock();
-    if(uih->recvRawDataLen > uih->maxTempRawDataLen - 1024) {
+    if(uih->recvRawDataLen > uih->maxTempRawDataLen - 512) {
         showRawData();
     }
 }

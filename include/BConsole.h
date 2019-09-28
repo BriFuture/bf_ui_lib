@@ -63,6 +63,9 @@ protected Q_SLOTS:
 private:
     Ui::BConsole *ui = nullptr;
     Uih::BConsoleHelper *uih = nullptr;
+    bool lastHexEnabled = false;
+    QByteArray tempRawData;
+
 };
 
 #endif // BCONSOLE_H

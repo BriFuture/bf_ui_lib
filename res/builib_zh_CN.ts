@@ -88,27 +88,25 @@ Qt Framework Version: 5.7.0</source>
         <translation>日志设置</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="60"/>
         <source>Special Char 
 Hide</source>
-        <translation>隐藏特殊字符</translation>
+        <translation type="vanished">隐藏特殊字符</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="87"/>
         <source>Stop Recv 
 Raw Data 
 When Hiding</source>
-        <translation>查看行数据时
+        <translation type="vanished">查看行数据时
 不接收原始数据</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="99"/>
+        <location filename="../include/BConsole.ui" line="70"/>
         <source>Clear Log</source>
         <translation>清空日志</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="106"/>
-        <location filename="../src/BConsole.cpp" line="78"/>
+        <location filename="../include/BConsole.ui" line="77"/>
+        <location filename="../src/BConsole.cpp" line="118"/>
         <source>Save Line Data</source>
         <translation>按行保存数据</translation>
     </message>
@@ -122,23 +120,33 @@ When Hiding</source>
         <translation type="vanished">光标移至末尾</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="74"/>
+        <location filename="../include/BConsole.ui" line="60"/>
         <source>Hex(Raw Data)</source>
         <translation>16进制显示
 （原始数据）</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="120"/>
+        <location filename="../include/BConsole.ui" line="91"/>
         <source>LineData</source>
         <translation>行数据</translation>
     </message>
     <message>
-        <location filename="../include/BConsole.ui" line="130"/>
+        <location filename="../include/BConsole.ui" line="112"/>
+        <source>Special Char Hide</source>
+        <translation>隐藏特殊字符</translation>
+    </message>
+    <message>
+        <location filename="../include/BConsole.ui" line="151"/>
+        <source>Stop Recv Raw Data When Hiding</source>
+        <translation>查看行数据时不接收原始数据</translation>
+    </message>
+    <message>
+        <location filename="../include/BConsole.ui" line="162"/>
         <source>Raw Data</source>
         <translation>原始数据</translation>
     </message>
     <message>
-        <location filename="../src/BConsole.cpp" line="81"/>
+        <location filename="../src/BConsole.cpp" line="122"/>
         <source>Save Raw Data</source>
         <translation>保存原始数据</translation>
     </message>
