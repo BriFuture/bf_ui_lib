@@ -4,6 +4,7 @@
 #include <QTime>
 #include <QPalette>
 #include <QDebug>
+#include <QStyle>
 
 namespace Uih {
 class BConsoleHelper {
