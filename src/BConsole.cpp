@@ -56,8 +56,12 @@ BConsole::BConsole(QWidget *parent): QWidget(parent),
     ui->isHex->hide();
     ui->hexField->hide();
 
-    connect( ui->clearBtn, &QPushButton::clicked, ui->rawField, &QPlainTextEdit::clear);
-    connect( ui->clearBtn, &QPushButton::clicked, ui->lineTextField, &QPlainTextEdit::clear);
+    connect( ui->clearBtn, &QPushButton::clicked, [=] {
+        ui->rawField->clear();
+        ui->lineTextField->clear();
+        ui->hexField->clear();
+        ui->sendField->clear();
+    });
     connect( ui->saveBtn,  &QPushButton::clicked, [=] { this->saveLog(); });
     connect(ui->isHex, &QCheckBox::clicked, [=](bool checked) { ui->hexField->setVisible(checked); });
 
