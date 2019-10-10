@@ -34,3 +34,7 @@ set(RESOURCES buires.qrc)
 
 set(CMAKE_DEBUG_POSTFIX d)
 add_library(Builib SHARED ${DIR_SRCS} ${UIS} ${HEADERS} ${RESOURCES})
+set_target_properties( Builib
+    PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/lib"
+)
