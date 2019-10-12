@@ -26,7 +26,9 @@ file( GLOB HEADERS
     ${PROJECT_SOURCE_DIR}/include/*.h
     )
 
-aux_source_directory(${PROJECT_SOURCE_DIR}/include DIR_SRCS)
+add_definitions(-DBUILD_WITH_CMAKE)
+
+aux_source_directory(${PROJECT_SOURCE_DIR}/src DIR_SRCS)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${PROJECT_SOURCE_DIR}/include/)
 file( GLOB UIS ${PROJECT_SOURCE_DIR}/include/*.ui )
@@ -34,6 +36,7 @@ set(RESOURCES buires.qrc)
 
 set(CMAKE_DEBUG_POSTFIX d)
 add_library(Builib SHARED ${DIR_SRCS} ${UIS} ${HEADERS} ${RESOURCES})
+target_link_libraries(Builib Qt5::Widgets Qt5::Core)
 set_target_properties( Builib
     PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/lib"
