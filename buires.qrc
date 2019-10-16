@@ -4,7 +4,6 @@
         <file>res/logo/logo.png</file>
         <file>res/logo/logo1.jpg</file>
         <file>res/logo/logo1.png</file>
-        <file>res/builib_zh_CN.qm</file>
         <file>res/bui.qss</file>
     </qresource>
 </RCC>

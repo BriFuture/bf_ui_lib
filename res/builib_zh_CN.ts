@@ -106,7 +106,7 @@ When Hiding</source>
     </message>
     <message>
         <location filename="../include/BConsole.ui" line="77"/>
-        <location filename="../src/BConsole.cpp" line="118"/>
+        <location filename="../src/BConsole.cpp" line="123"/>
         <source>Save Line Data</source>
         <translation>按行保存数据</translation>
     </message>
@@ -146,7 +146,7 @@ When Hiding</source>
         <translation>原始数据</translation>
     </message>
     <message>
-        <location filename="../src/BConsole.cpp" line="122"/>
+        <location filename="../src/BConsole.cpp" line="127"/>
         <source>Save Raw Data</source>
         <translation>保存原始数据</translation>
     </message>
