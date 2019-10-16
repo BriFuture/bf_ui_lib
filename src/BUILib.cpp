@@ -3,6 +3,10 @@
 #include <QFile>
 #include <QDebug>
 
+#ifdef BUILD_WITH_CMAKE
+#include "config.h"
+#endif
+
 BUILib::BUILib()
 {
 
