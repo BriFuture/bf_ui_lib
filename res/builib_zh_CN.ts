@@ -233,7 +233,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/BUILib.cpp" line="18"/>
+        <location filename="../src/BUILib.cpp" line="22"/>
         <source>Customized BUI Library.
  Version: %1</source>
         <translation>BUI 库。
