@@ -12,10 +12,10 @@ BProgramSharer::BProgramSharer(const QString programName)
 }
 
 
-void BProgramSharer::exportProgramPath(const QApplication &app)
+void BProgramSharer::exportProgramPath(const QCoreApplication *app)
 {
     set->beginGroup("ProgramPath");
-    set->setValue(programName, app.applicationFilePath());
+    set->setValue(programName, app->applicationFilePath());
     set->endGroup();
 }
 
@@ -52,7 +52,7 @@ QString BProgramSharer::findProgram(const QString &programName, const QString &d
 void BProgramSharer::open()
 {
     if(set == nullptr) {
-        set = new QSettings(QString("%1/bf_programs.ini")
+        set = new QSettings(QString("%1/.bf_programs.ini")
                 .arg(QDir::homePath()), QSettings::IniFormat);
     }
 }

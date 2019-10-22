@@ -11,7 +11,7 @@ class BUILIBSHARED_EXPORT BProgramSharer
 {
 public:
     BProgramSharer(const QString programName);
-    void exportProgramPath(const QApplication &app);
+    void exportProgramPath(const QCoreApplication *app);
     void exportMainWindowId(const QString &id);
     void exportPID();
 
