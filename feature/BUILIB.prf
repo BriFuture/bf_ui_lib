@@ -1,13 +1,13 @@
 builib {
 _BUI_LIB_MAJOR_VER = 0
 builib_inc = $$PWD/..
-INCLUDEPATH += $$builib_inc/include
+INCLUDEPATH += $$builib_inc/include $$builib_inc/include/components
 DEPENDPATH  += $$builib_inc/include
 
 CONFIG(release, debug|release): {
     win32 {
-        gcc:       LIBS  += -L"$$builib_inc/lib" -l"BuiLib-gcc$${_BUI_LIB_MAJOR_VER}"
-        else:msvc: LIBS  += -L"$$builib_inc/lib" -l"BuiLib-msvc$${_BUI_LIB_MAJOR_VER}"
+        gcc:       LIBS  += -L"$$builib_inc/lib" -l"BuiLib-gcc"
+        else:msvc: LIBS  += -L"$$builib_inc/lib" -l"BuiLib-msvc"
     } else: unix {
         LIBS  += -L"$$builib_inc/lib" -l"BuiLib-gcc"
     }
@@ -17,8 +17,8 @@ CONFIG(release, debug|release): {
 }
 else:CONFIG(debug, debug|release): {
     win32 {
-        gcc:       LIBS  += -L"$$builib_inc/lib" -l"BuiLibd-gcc$${_BUI_LIB_MAJOR_VER}"
-        else:msvc: LIBS  += -L"$$builib_inc/lib" -l"BuiLibd-msvc$${_BUI_LIB_MAJOR_VER}"
+        gcc:       LIBS  += -L"$$builib_inc/lib" -l"BuiLibd-gcc"
+        else:msvc: LIBS  += -L"$$builib_inc/lib" -l"BuiLibd-msvc"
     } else: unix {
         LIBS  += -L"$$builib_inc/lib" -l"BuiLibd-gcc"
     }
@@ -26,3 +26,4 @@ else:CONFIG(debug, debug|release): {
 #    else:win32:!win32-g++: PRE_TARGETDEPS += $$PWD/lib/BuiLibd-msvc$${_BUI_LIB_MAJOR_VER}.lib
 }
 }
+
