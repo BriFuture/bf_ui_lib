@@ -1,6 +1,9 @@
 COMPONENTS_SRC_DIR=$$PWD/src/components
 COMPONENTS_INC_DIR=$$PWD/include/components
 
+INCLUDEPATH += $$COMPONENTS_INC_DIR
+INCLUDEPATH += $$COMPONENTS_SRC_DIR
+
 SOURCES += \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialstyle.cpp \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialtheme.cpp \
@@ -13,8 +16,8 @@ SOURCES += \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialstyle_p.h \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialtheme_p.h \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialcheckable_p.h \
-    $$COMPONENTS_SRC_DIR/layouts/qtmaterialsnackbarlayout_p.h \
-    $$COMPONENTS_SRC_DIR/layouts/qtmaterialsnackbarlayout.cpp \
+#    $$COMPONENTS_SRC_DIR/layouts/qtmaterialsnackbarlayout_p.h \
+#    $$COMPONENTS_SRC_DIR/layouts/qtmaterialsnackbarlayout.cpp \
     $$COMPONENTS_SRC_DIR/qtmaterialavatar.cpp \
     $$COMPONENTS_SRC_DIR/qtmaterialbadge.cpp \
     $$COMPONENTS_SRC_DIR/qtmaterialcheckbox.cpp \
@@ -52,7 +55,7 @@ SOURCES += \
     $$COMPONENTS_SRC_DIR/qtmaterialmenu.cpp \
     $$COMPONENTS_SRC_DIR/qtmaterialmenu_internal.cpp \
     $$COMPONENTS_SRC_DIR/qtmateriallist.cpp \
-    $$COMPONENTS_SRC_DIR/qtmateriallistitem.cpp
+    $$COMPONENTS_SRC_DIR/qtmateriallistitem.cpp \
     $$COMPONENTS_SRC_DIR/qtmaterialavatar_p.h \
     $$COMPONENTS_SRC_DIR/qtmaterialbadge_p.h \
     $$COMPONENTS_SRC_DIR/qtmaterialcheckbox_p.h \
@@ -89,7 +92,7 @@ HEADERS += \
     $$COMPONENTS_INC_DIR/lib/qtmaterialcheckable.h \
     $$COMPONENTS_INC_DIR/lib/qtmaterialstatetransition.h \
     $$COMPONENTS_INC_DIR/lib/qtmaterialstatetransitionevent.h \
-    $$COMPONENTS_INC_DIR/layouts/qtmaterialsnackbarlayout.h \
+#    $$COMPONENTS_INC_DIR/layouts/qtmaterialsnackbarlayout.h \
     $$COMPONENTS_INC_DIR/qtmaterialavatar.h \
     $$COMPONENTS_INC_DIR/qtmaterialbadge.h \
     $$COMPONENTS_INC_DIR/qtmaterialcheckbox.h \

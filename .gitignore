@@ -50,4 +50,4 @@ __pycache__
 
 BasicComm/lib/
 *.vscode/ipch
-lib
+lib/
