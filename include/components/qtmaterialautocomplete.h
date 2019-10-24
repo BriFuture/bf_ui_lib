@@ -5,7 +5,7 @@
 
 class QtMaterialAutoCompletePrivate;
 
-class QtMaterialAutoComplete : public QtMaterialTextField
+class BUILIB_COMP_EXPORT  QtMaterialAutoComplete : public QtMaterialTextField
 {
     Q_OBJECT
 

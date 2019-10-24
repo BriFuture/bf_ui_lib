@@ -8,11 +8,14 @@ TEMPLATE = lib
 
 DEFINES += BUILIB_LIBRARY
 include(Builib.pri)
+
 include(components.pri)
 
 _BUI_LIB_MAJOR_VER = 0
 _BUI_LIB_MINOR_VER = 1
 _BUI_LIB_PATCH_VER = 30
+win32: CONFIG += skip_target_version_ext
+
 
 win32: VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER".1"
 else:  VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VER

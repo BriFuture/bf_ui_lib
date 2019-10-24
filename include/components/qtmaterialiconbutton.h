@@ -5,7 +5,7 @@
 
 class QtMaterialIconButtonPrivate;
 
-class QtMaterialIconButton : public QAbstractButton
+class BUILIB_COMP_EXPORT  QtMaterialIconButton : public QAbstractButton
 {
     Q_OBJECT
 

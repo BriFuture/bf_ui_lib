@@ -1,4 +1,4 @@
-#ifndef QTMATERIALAUTOCOMPLETE_P_H
+﻿#ifndef QTMATERIALAUTOCOMPLETE_P_H
 #define QTMATERIALAUTOCOMPLETE_P_H
 
 #include "qtmaterialtextfield_p.h"
@@ -7,6 +7,8 @@ class QWidget;
 class QVBoxLayout;
 class QtMaterialAutoCompleteOverlay;
 class QtMaterialAutoCompleteStateMachine;
+//class QtMaterialAutoComplete;
+#include "qtmaterialautocomplete.h"
 
 class QtMaterialAutoCompletePrivate : public QtMaterialTextFieldPrivate
 {

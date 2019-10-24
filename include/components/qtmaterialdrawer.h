@@ -6,7 +6,7 @@
 class QtMaterialDrawerPrivate;
 class QtMaterialDrawerStateMachine;
 
-class QtMaterialDrawer : public QtMaterialOverlayWidget
+class BUILIB_COMP_EXPORT  QtMaterialDrawer : public QtMaterialOverlayWidget
 {
     Q_OBJECT
 

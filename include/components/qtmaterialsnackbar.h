@@ -5,7 +5,7 @@
 
 class QtMaterialSnackbarPrivate;
 
-class QtMaterialSnackbar : public QtMaterialOverlayWidget
+class BUILIB_COMP_EXPORT  QtMaterialSnackbar : public QtMaterialOverlayWidget
 {
     Q_OBJECT
 

@@ -1,4 +1,4 @@
-#ifndef QTMATERIALTHEME_H
+﻿#ifndef QTMATERIALTHEME_H
 #define QTMATERIALTHEME_H
 
 #include <QObject>
@@ -314,14 +314,14 @@ namespace Material
         darkWhite,
         lightWhite
     };
-    extern const QVector<QColor> palette;
+    BUILIB_COMP_EXPORT extern const QVector<QColor> palette;
 
 #define CPalette(color) palette[color]
 }
 
 class QtMaterialThemePrivate;
 
-class QtMaterialTheme : public QObject
+class BUILIB_COMP_EXPORT  QtMaterialTheme : public QObject
 {
     Q_OBJECT
 

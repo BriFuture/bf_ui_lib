@@ -2,7 +2,6 @@ COMPONENTS_SRC_DIR=$$PWD/src/components
 COMPONENTS_INC_DIR=$$PWD/include/components
 
 INCLUDEPATH += $$COMPONENTS_INC_DIR
-INCLUDEPATH += $$COMPONENTS_SRC_DIR
 
 SOURCES += \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialstyle.cpp \
@@ -13,9 +12,6 @@ SOURCES += \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialripple.cpp \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialrippleoverlay.cpp \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialstatetransition.cpp \
-    $$COMPONENTS_SRC_DIR/lib/qtmaterialstyle_p.h \
-    $$COMPONENTS_SRC_DIR/lib/qtmaterialtheme_p.h \
-    $$COMPONENTS_SRC_DIR/lib/qtmaterialcheckable_p.h \
 #    $$COMPONENTS_SRC_DIR/layouts/qtmaterialsnackbarlayout_p.h \
 #    $$COMPONENTS_SRC_DIR/layouts/qtmaterialsnackbarlayout.cpp \
     $$COMPONENTS_SRC_DIR/qtmaterialavatar.cpp \
@@ -55,34 +51,37 @@ SOURCES += \
     $$COMPONENTS_SRC_DIR/qtmaterialmenu.cpp \
     $$COMPONENTS_SRC_DIR/qtmaterialmenu_internal.cpp \
     $$COMPONENTS_SRC_DIR/qtmateriallist.cpp \
-    $$COMPONENTS_SRC_DIR/qtmateriallistitem.cpp \
-    $$COMPONENTS_SRC_DIR/qtmaterialavatar_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialbadge_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialcheckbox_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialfab_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialraisedbutton_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialflatbutton_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialiconbutton_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialprogress_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialcircularprogress_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialslider_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialsnackbar_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialradiobutton_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialtoggle_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialtextfield_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialtabs_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialscrollbar_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialdialog_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialdrawer_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialappbar_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialautocomplete_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialpaper_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialtable_p.h \
-    $$COMPONENTS_SRC_DIR/qtmaterialmenu_p.h \
-    $$COMPONENTS_SRC_DIR/qtmateriallist_p.h \
-    $$COMPONENTS_SRC_DIR/qtmateriallistitem_p.h
+    $$COMPONENTS_SRC_DIR/qtmateriallistitem.cpp
 
 HEADERS += \
+    $$COMPONENTS_INC_DIR/lib/qtmaterialstyle_p.h \
+    $$COMPONENTS_INC_DIR/lib/qtmaterialtheme_p.h \
+    $$COMPONENTS_INC_DIR/lib/qtmaterialcheckable_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialavatar_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialbadge_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialcheckbox_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialfab_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialraisedbutton_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialflatbutton_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialiconbutton_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialprogress_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialcircularprogress_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialslider_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialsnackbar_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialradiobutton_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialtoggle_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialtextfield_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialtabs_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialscrollbar_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialdialog_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialdrawer_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialappbar_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialautocomplete_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialpaper_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialtable_p.h \
+    $$COMPONENTS_INC_DIR/qtmaterialmenu_p.h \
+    $$COMPONENTS_INC_DIR/qtmateriallist_p.h \
+    $$COMPONENTS_INC_DIR/qtmateriallistitem_p.h \
     $$COMPONENTS_INC_DIR/lib/qtmaterialstyle.h \
     $$COMPONENTS_INC_DIR/lib/qtmaterialtheme.h \
     $$COMPONENTS_INC_DIR/lib/qtmaterialoverlaywidget.h \
@@ -130,7 +129,11 @@ HEADERS += \
     $$COMPONENTS_INC_DIR/qtmaterialmenu.h \
     $$COMPONENTS_INC_DIR/qtmaterialmenu_internal.h \
     $$COMPONENTS_INC_DIR/qtmateriallist.h \
-    $$COMPONENTS_INC_DIR/qtmateriallistitem.h 
+    $$COMPONENTS_INC_DIR/qtmateriallistitem.h  \
+    $$PWD/include/components/builib_components_global.h \
+    $$PWD/include/components/qtcomp/QtRaisedButton.h
 
 RESOURCES += \
     $$COMPONENTS_INC_DIR/resources.qrc
+
+PRECOMPILED_HEADER = $$COMPONENTS_INC_DIR/builib_components_global.h

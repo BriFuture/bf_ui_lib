@@ -5,7 +5,7 @@
 
 class QtMaterialCheckBoxPrivate;
 
-class QtMaterialCheckBox : public QtMaterialCheckable
+class BUILIB_COMP_EXPORT  QtMaterialCheckBox : public QtMaterialCheckable
 {
     Q_OBJECT
 

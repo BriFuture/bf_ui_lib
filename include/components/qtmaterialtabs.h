@@ -8,7 +8,7 @@
 class QtMaterialTabsPrivate;
 class QtMaterialTab;
 
-class QtMaterialTabs : public QWidget
+class BUILIB_COMP_EXPORT  QtMaterialTabs : public QWidget
 {
     Q_OBJECT
 

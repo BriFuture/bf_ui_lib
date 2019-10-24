@@ -7,7 +7,7 @@
 class QLayout;
 class QtMaterialDialogPrivate;
 
-class QtMaterialDialog : public QtMaterialOverlayWidget
+class BUILIB_COMP_EXPORT  QtMaterialDialog : public QtMaterialOverlayWidget
 {
     Q_OBJECT
 

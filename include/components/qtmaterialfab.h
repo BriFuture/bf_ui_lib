@@ -5,7 +5,7 @@
 
 class QtMaterialFloatingActionButtonPrivate;
 
-class QtMaterialFloatingActionButton : public QtMaterialRaisedButton
+class BUILIB_COMP_EXPORT  QtMaterialFloatingActionButton : public QtMaterialRaisedButton
 {
     Q_OBJECT
 

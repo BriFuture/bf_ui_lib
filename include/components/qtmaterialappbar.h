@@ -6,7 +6,7 @@
 
 class QtMaterialAppBarPrivate;
 
-class QtMaterialAppBar : public QWidget
+class BUILIB_COMP_EXPORT  QtMaterialAppBar : public QWidget
 {
     Q_OBJECT
 

@@ -9,7 +9,7 @@
 
 class QtMaterialTheme;
 
-class QtMaterialStyle : public QCommonStyle
+class BUILIB_COMP_EXPORT  QtMaterialStyle : public QCommonStyle
 {
     Q_OBJECT
 

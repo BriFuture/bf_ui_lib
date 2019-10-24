@@ -9,7 +9,7 @@
 
 class QtMaterialRippleOverlay;
 
-class QtMaterialRipple : public QParallelAnimationGroup
+class BUILIB_COMP_EXPORT  QtMaterialRipple : public QParallelAnimationGroup
 {
     Q_OBJECT
 

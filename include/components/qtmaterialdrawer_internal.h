@@ -1,4 +1,4 @@
-#ifndef DRAWER_INTERNAL_H
+﻿#ifndef DRAWER_INTERNAL_H
 #define DRAWER_INTERNAL_H
 
 #include <QStateMachine>

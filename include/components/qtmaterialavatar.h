@@ -6,7 +6,7 @@
 
 class QtMaterialAvatarPrivate;
 
-class QtMaterialAvatar : public QWidget
+class BUILIB_COMP_EXPORT  QtMaterialAvatar : public QWidget
 {
     Q_OBJECT
 

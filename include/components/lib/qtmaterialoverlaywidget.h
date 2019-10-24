@@ -3,7 +3,7 @@
 
 #include <QtWidgets/QWidget>
 
-class QtMaterialOverlayWidget : public QWidget
+class BUILIB_COMP_EXPORT  QtMaterialOverlayWidget : public QWidget
 {
     Q_OBJECT
 

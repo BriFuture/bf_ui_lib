@@ -6,7 +6,7 @@
 
 class QtMaterialTextFieldPrivate;
 
-class QtMaterialTextField : public QLineEdit
+class BUILIB_COMP_EXPORT  QtMaterialTextField : public QLineEdit
 {
     Q_OBJECT
 

@@ -1,4 +1,4 @@
-#ifndef QTMATERIALSLIDER_INTERNAL_H
+﻿#ifndef QTMATERIALSLIDER_INTERNAL_H
 #define QTMATERIALSLIDER_INTERNAL_H
 
 #include <QStateMachine>
@@ -168,7 +168,7 @@ inline int QtMaterialSliderThumb::offset() const
     return m_offset;
 }
 
-class QtMaterialSliderTrack : public QtMaterialOverlayWidget
+class BUILIB_COMP_EXPORT  QtMaterialSliderTrack : public QtMaterialOverlayWidget
 {
     Q_OBJECT
 

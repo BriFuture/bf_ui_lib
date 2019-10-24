@@ -8,7 +8,7 @@
 
 class QtMaterialSliderPrivate;
 
-class QtMaterialSlider : public QAbstractSlider
+class BUILIB_COMP_EXPORT  QtMaterialSlider : public QAbstractSlider
 {
     Q_OBJECT
 

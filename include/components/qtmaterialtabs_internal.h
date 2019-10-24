@@ -1,4 +1,4 @@
-#ifndef QTMATERIALTABS_INTERNAL_H
+﻿#ifndef QTMATERIALTABS_INTERNAL_H
 #define QTMATERIALTABS_INTERNAL_H
 
 #include "lib/qtmaterialoverlaywidget.h"

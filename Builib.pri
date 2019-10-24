@@ -12,24 +12,7 @@ UI_HEADERS_DIR = ./qt/ui/include
 UI_SOURCES_DIR = ./qt/ui/src
 
 }
-else {
-
-CONFIG(release, debug|release): {
-    gcc:       LIBS  += -L"$$PWD/lib" -l"BuiLib-gcc"
-    else:msvc: LIBS  += -L"$$PWD/lib" -l"BuiLib-msvc"
-
-#    win32-g++: PRE_TARGETDEPS += $$PWD/lib/libBuiLib-gcc$${_BUI_LIB_MAJOR_VER}.a
-#    else:win32:!win32-g++: PRE_TARGETDEPS += $$PWD/lib/BuiLib-msvc$${_BUI_LIB_MAJOR_VER}.lib
-}
-else:CONFIG(debug, debug|release): {
-    gcc:       LIBS  += -L"$$PWD/lib" -l"BuiLibd-gcc"
-    else:msvc: LIBS  += -L"$$PWD/lib" -l"BuiLibd-msvc"
-
-#    win32-g++: PRE_TARGETDEPS += $$PWD/lib/libBuiLibd-gcc$${_BUI_LIB_MAJOR_VER}.a
-#    else:win32:!win32-g++: PRE_TARGETDEPS += $$PWD/lib/BuiLibd-msvc$${_BUI_LIB_MAJOR_VER}.lib
-}
-
-} # contains(DEFINES, BUILIB_LIBRARY)
 
 INCLUDEPATH += $$PWD/include
 DEPENDPATH  += $$PWD/include
+include(feature/Builib.prf)

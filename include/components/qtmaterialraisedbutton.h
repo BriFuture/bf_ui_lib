@@ -1,11 +1,11 @@
-#ifndef QTMATERIALRAISEDBUTTON_H
+﻿#ifndef QTMATERIALRAISEDBUTTON_H
 #define QTMATERIALRAISEDBUTTON_H
 
 #include "qtmaterialflatbutton.h"
 
 class QtMaterialRaisedButtonPrivate;
 
-class QtMaterialRaisedButton : public QtMaterialFlatButton
+class BUILIB_COMP_EXPORT  QtMaterialRaisedButton : public QtMaterialFlatButton
 {
     Q_OBJECT
 

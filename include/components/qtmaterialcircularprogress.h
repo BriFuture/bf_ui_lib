@@ -6,7 +6,7 @@
 
 class QtMaterialCircularProgressPrivate;
 
-class QtMaterialCircularProgress : public QProgressBar
+class BUILIB_COMP_EXPORT  QtMaterialCircularProgress : public QProgressBar
 {
     Q_OBJECT
 
