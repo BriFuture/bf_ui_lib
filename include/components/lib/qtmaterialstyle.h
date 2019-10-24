@@ -37,4 +37,6 @@ inline QtMaterialStyle &QtMaterialStyle::instance()
     return instance;
 }
 
+#define MaterialThemeColor(key) QtMaterialStyle::instance().themeColor(key)
+
 #endif // QTMATERIALSTYLE_H

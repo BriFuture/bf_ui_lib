@@ -109,9 +109,26 @@ QtMaterialTheme::QtMaterialTheme(QObject *parent)
     : QObject(parent),
       d_ptr(new QtMaterialThemePrivate(this))
 {
+    setColor("primary", Material::blue500);
     setColor("primary1", Material::cyan500);
     setColor("primary2", Material::cyan700);
     setColor("primary3", Material::lightBlack);
+
+    setColor("danger",  Material::red500);
+    setColor("danger1", Material::red200);
+    setColor("danger2", Material::red400);
+    setColor("danger3", Material::red600);
+
+    setColor("success",  Material::green500);
+    setColor("success1", Material::green200);
+    setColor("success2", Material::green400);
+    setColor("success3", Material::green600);
+
+    setColor("warning",  Material::yellow500);
+    setColor("warning1", Material::yellow200);
+    setColor("warning2", Material::yellow400);
+    setColor("warning3", Material::yellow600);
+
     setColor("accent1", Material::pinkA200);
     setColor("accent2", Material::grey100);
     setColor("accent3", Material::grey500);
