@@ -3,6 +3,7 @@ builib_inc = $$PWD/..
 INCLUDEPATH += $$builib_inc/include $$builib_inc/include/components
 DEPENDPATH  += $$builib_inc/include
 PRECOMPILED_HEADER += $$builib_inc/include/components/builib_components_global.h
+CONFIG += precompile_header
 CONFIG(release, debug|release): {
     win32 {
         gcc:       LIBS  += -L"$$builib_inc/lib" -l"BuiLib-gcc"
