@@ -1,8 +1,9 @@
 COMPONENTS_SRC_DIR=$$PWD/src/components
 COMPONENTS_INC_DIR=$$PWD/include/components
 
-INCLUDEPATH += $$COMPONENTS_INC_DIR
-
+INCLUDEPATH += $$COMPONENTS_INC_DIR $$COMPONENTS_INC_DIR/lib
+PRECOMPILED_HEADER = $$COMPONENTS_INC_DIR/builib_components_global.h
+CONFIG += precompile_header
 SOURCES += \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialstyle.cpp \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialtheme.cpp \
@@ -135,5 +136,3 @@ HEADERS += \
 
 RESOURCES += \
     $$COMPONENTS_INC_DIR/resources.qrc
-
-PRECOMPILED_HEADER = $$COMPONENTS_INC_DIR/builib_components_global.h

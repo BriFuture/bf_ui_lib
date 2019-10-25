@@ -94,7 +94,7 @@ QtMaterialThemePrivate::~QtMaterialThemePrivate()
 {
 }
 
- QColor QtMaterialThemePrivate::rgba(int r, int g, int b, qreal a)
+QColor QtMaterialThemePrivate::rgba(int r, int g, int b, qreal a)
 {
     QColor color(r, g, b);
     color.setAlphaF(a);
