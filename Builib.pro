@@ -13,7 +13,7 @@ include(components.pri)
 
 _BUI_LIB_MAJOR_VER = 0
 _BUI_LIB_MINOR_VER = 1
-_BUI_LIB_PATCH_VER = 30
+_BUI_LIB_PATCH_VER = 32
 win32: CONFIG += skip_target_version_ext
 
 
