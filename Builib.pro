@@ -23,8 +23,11 @@ else:  VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VE
 DEFINES += _BUI_LIB_MAJOR_VER=$$_BUI_LIB_MAJOR_VER \
     _BUI_LIB_MINOR_VER=$$_BUI_LIB_MINOR_VER \
     _BUI_LIB_PATCH_VER=$$_BUI_LIB_PATCH_VER
-
-DESTDIR = $$PWD/lib/
+android {
+    DESTDIR = $$PWD/bin/androidlib/
+} else {
+    DESTDIR = $$PWD/lib/
+}
 CONFIG(debug, debug|release) {
     gcc:       TARGET = BuiLibd-gcc
     else:msvc: TARGET = BuiLibd-msvc

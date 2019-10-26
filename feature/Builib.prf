@@ -2,10 +2,16 @@ builib {
 builib_inc = $$PWD/..
 INCLUDEPATH += $$builib_inc/include $$builib_inc/include/components
 DEPENDPATH  += $$builib_inc/include
+
+android {
+    LIBS += -L"$$builib_inc//bin/androidlib"
+} else {
+    LIBS += -L"$$builib_inc/lib"
+}
 CONFIG(release, debug|release): {
     win32 {
-        gcc:       LIBS  += -L"$$builib_inc/lib" -l"BuiLib-gcc"
-        else:msvc: LIBS  += -L"$$builib_inc/lib" -l"BuiLib-msvc"
+        gcc:       LIBS  += -l"BuiLib-gcc"
+        else:msvc: LIBS  += -l"BuiLib-msvc"
     } else: unix {
         LIBS  += -L"$$builib_inc/lib" -l"BuiLib-gcc"
     }
@@ -15,8 +21,8 @@ CONFIG(release, debug|release): {
 }
 else:CONFIG(debug, debug|release): {
     win32 {
-        gcc:       LIBS  += -L"$$builib_inc/lib" -l"BuiLibd-gcc"
-        else:msvc: LIBS  += -L"$$builib_inc/lib" -l"BuiLibd-msvc"
+        gcc:       LIBS  += -l"BuiLibd-gcc"
+        else:msvc: LIBS  += -l"BuiLibd-msvc"
     } else: unix {
         LIBS  += -L"$$builib_inc/lib" -l"BuiLibd-gcc"
     }
