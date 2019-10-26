@@ -23,11 +23,17 @@ else:  VERSION=$$_BUI_LIB_MAJOR_VER"."$$_BUI_LIB_MINOR_VER"."$$_BUI_LIB_PATCH_VE
 DEFINES += _BUI_LIB_MAJOR_VER=$$_BUI_LIB_MAJOR_VER \
     _BUI_LIB_MINOR_VER=$$_BUI_LIB_MINOR_VER \
     _BUI_LIB_PATCH_VER=$$_BUI_LIB_PATCH_VER
+
 android {
-    DESTDIR = $$PWD/bin/androidlib/
+contains(ANDROID_TARGET_ARCH,x86) {
+    DESTDIR = "$$PWD/bin/android-x86-lib"
+} else : contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+    DESTDIR = "$$PWD/bin/android-v7a-lib"
+}
 } else {
     DESTDIR = $$PWD/lib/
-}
+} #android
+
 CONFIG(debug, debug|release) {
     gcc:       TARGET = BuiLibd-gcc
     else:msvc: TARGET = BuiLibd-msvc

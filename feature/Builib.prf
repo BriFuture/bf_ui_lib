@@ -4,7 +4,11 @@ INCLUDEPATH += $$builib_inc/include $$builib_inc/include/components
 DEPENDPATH  += $$builib_inc/include
 
 android {
-    LIBS += -L"$$builib_inc//bin/androidlib"
+contains(ANDROID_TARGET_ARCH,x86) {
+    LIBS += -L"$$builib_inc/bin/android-x86-lib"
+} else : contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+    LIBS += -L"$$builib_inc/bin/android-v7a-lib"
+}
 } else {
     LIBS += -L"$$builib_inc/lib"
 }
