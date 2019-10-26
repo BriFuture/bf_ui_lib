@@ -5,6 +5,7 @@
 
 class QtMaterialTogglePrivate;
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialToggle : public QAbstractButton
 {
     Q_OBJECT

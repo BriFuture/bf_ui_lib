@@ -5,6 +5,7 @@
 #include <QScopedPointer>
 #include <QColor>
 #include <QIcon>
+#include "builib_components_global.h"
 
 namespace Material
 {

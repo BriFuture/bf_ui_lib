@@ -15,4 +15,5 @@ UI_SOURCES_DIR = ./qt/ui/src
 
 INCLUDEPATH += $$PWD/include
 DEPENDPATH  += $$PWD/include
+
 include(feature/Builib.prf)

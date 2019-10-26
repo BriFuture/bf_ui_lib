@@ -5,6 +5,7 @@
 
 class QtMaterialRaisedButtonPrivate;
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialRaisedButton : public QtMaterialFlatButton
 {
     Q_OBJECT

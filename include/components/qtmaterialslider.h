@@ -8,6 +8,7 @@
 
 class QtMaterialSliderPrivate;
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialSlider : public QAbstractSlider
 {
     Q_OBJECT

@@ -5,6 +5,7 @@
 
 class QtMaterialScrollBarPrivate;
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialScrollBar : public QScrollBar
 {
     Q_OBJECT

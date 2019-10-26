@@ -8,6 +8,7 @@
 class QtMaterialTabsPrivate;
 class QtMaterialTab;
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialTabs : public QWidget
 {
     Q_OBJECT

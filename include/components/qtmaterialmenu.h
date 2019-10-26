@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QWidget>
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialMenu : public QWidget
 {
     Q_OBJECT

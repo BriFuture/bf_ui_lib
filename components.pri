@@ -2,8 +2,6 @@ COMPONENTS_SRC_DIR=$$PWD/src/components
 COMPONENTS_INC_DIR=$$PWD/include/components
 
 INCLUDEPATH += $$COMPONENTS_INC_DIR $$COMPONENTS_INC_DIR/lib
-PRECOMPILED_HEADER = $$COMPONENTS_INC_DIR/builib_components_global.h
-CONFIG += precompile_header
 SOURCES += \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialstyle.cpp \
     $$COMPONENTS_SRC_DIR/lib/qtmaterialtheme.cpp \
@@ -131,8 +129,9 @@ HEADERS += \
     $$COMPONENTS_INC_DIR/qtmaterialmenu_internal.h \
     $$COMPONENTS_INC_DIR/qtmateriallist.h \
     $$COMPONENTS_INC_DIR/qtmateriallistitem.h  \
-    $$PWD/include/components/builib_components_global.h \
-    $$PWD/include/components/qtcomp/QtRaisedButton.h
+    $$COMPONENTS_INC_DIR/qtcomp/QtRaisedButton.h \
+    $$COMPONENTS_INC_DIR/builib_components_global.h \
+    $$PWD/include/components/MaterialPrecompiled.h
 
 RESOURCES += \
     $$COMPONENTS_INC_DIR/resources.qrc

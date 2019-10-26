@@ -6,6 +6,7 @@
 
 class QtMaterialCircularProgressPrivate;
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialCircularProgress : public QProgressBar
 {
     Q_OBJECT

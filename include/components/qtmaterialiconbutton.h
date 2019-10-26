@@ -5,6 +5,7 @@
 
 class QtMaterialIconButtonPrivate;
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialIconButton : public QAbstractButton
 {
     Q_OBJECT

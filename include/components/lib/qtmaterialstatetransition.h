@@ -4,6 +4,7 @@
 #include <QAbstractTransition>
 #include "lib/qtmaterialstatetransitionevent.h"
 
+#include "builib_components_global.h"
 class BUILIB_COMP_EXPORT  QtMaterialStateTransition : public QAbstractTransition
 {
     Q_OBJECT
