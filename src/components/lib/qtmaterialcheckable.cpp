@@ -368,8 +368,8 @@ void QtMaterialCheckable::mousePressEvent(QMouseEvent *event)
         ripple->setOpacityStartValue(1);
     }
     d->rippleOverlay->addRipple(ripple);
-
     setChecked(!isChecked());
+    emit clicked(isChecked());
 }
 
 /*!
