@@ -109,10 +109,15 @@ QtMaterialTheme::QtMaterialTheme(QObject *parent)
     : QObject(parent),
       d_ptr(new QtMaterialThemePrivate(this))
 {
-    setColor("primary", Material::blue400);
+    setColor("primary",  Material::blue400);
     setColor("primary1", Material::cyan500);
     setColor("primary2", Material::cyan700);
     setColor("primary3", Material::lightBlack);
+
+    setColor("secondary",  Material::grey400);
+    setColor("secondary1", Material::grey100);
+    setColor("secondary2", Material::grey300);
+    setColor("secondary3", Material::grey500);
 
     setColor("danger",  Material::red400);
     setColor("danger1", Material::red100);

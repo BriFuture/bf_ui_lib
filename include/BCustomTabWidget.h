@@ -29,7 +29,9 @@ public:
     void setCurrentIndex(int index);
     inline void setCurrentWidget(QWidget *w) { setCurrentIndex(indexOf(w)); }
     int indexOf(QWidget *w);
-
+    void setSidebarMaxWidth(int w);
+signals:
+    void tabWidgetChanged(QWidget *w);
 private slots:
     void on_sidebar_itemClicked(QListWidgetItem *item);
     void onNavBtnClicked();

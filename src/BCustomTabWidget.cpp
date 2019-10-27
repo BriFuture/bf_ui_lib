@@ -73,6 +73,7 @@ void BCustomTabWidget::setCurrentIndex(int index)
 {
     ui->sidebar->setCurrentRow(index);
     ui->mainWidget->setCurrentIndex(index);
+    tabWidgetChanged(ui->mainWidget->widget(index));
 }
 
 
@@ -81,11 +82,17 @@ int BCustomTabWidget::indexOf(QWidget *w)
     return ui->mainWidget->indexOf(w);
 }
 
+void BCustomTabWidget::setSidebarMaxWidth(int w)
+{
+    ui->frame->setMaximumWidth(w);
+}
+
 void BCustomTabWidget::on_sidebar_itemClicked(QListWidgetItem *item)
 {
     Q_UNUSED(item)
     int index = ui->sidebar->currentRow();
     ui->mainWidget->setCurrentIndex(index);
+    tabWidgetChanged(ui->mainWidget->widget(index));
 }
 
 void BCustomTabWidget::onNavBtnClicked()
