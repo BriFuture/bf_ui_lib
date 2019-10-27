@@ -13,7 +13,7 @@ include(components.pri)
 
 _BUI_LIB_MAJOR_VER = 0
 _BUI_LIB_MINOR_VER = 1
-_BUI_LIB_PATCH_VER = 32
+_BUI_LIB_PATCH_VER = 34
 win32: CONFIG += skip_target_version_ext
 
 
@@ -58,6 +58,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/BAboutDialog.cpp \
+    src/BCustomTabWidget.cpp \
     src/BLauncher.cpp \
     src/BUiUtil.cpp \
     src/BProgramSharer.cpp \
@@ -69,6 +70,7 @@ SOURCES += \
 
 HEADERS += \
     include/BAboutDialog.h \
+    include/BCustomTabWidget.h \
     include/builib_global.h \
     include/BLauncher.h \
     include/BUiUtil.h \
@@ -93,7 +95,8 @@ FORMS += \
     include/BLauncher.ui \
     include/BLoadingDialog.ui \
     include/BCard.ui \
-    include/BConsole.ui
+    include/BConsole.ui \
+    src/BCustomTabWidget.ui
 
 DISTFILES += \
     res/bui.qss
